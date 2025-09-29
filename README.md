@@ -1,2 +1,2 @@
 # filament-laravel
-learling filament!
+learning filament!
