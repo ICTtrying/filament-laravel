@@ -21,8 +21,9 @@ class PostForm
             ->components([
                 Section::make('Create a post')->schema([
                     TextInput::make('title')
+                        ->rules(['min:3', 'max:15'])
                         ->required(),
-                    TextInput::make('slug')
+                    TextInput::make('slug')->unique(ignoreRecord:true)
                         ->required(),
                     Select::make('category_id')
                         ->relationship('category', 'name')
@@ -33,7 +34,6 @@ class PostForm
                         ->columnSpanFull(),
 
                     Toggle::make('published')
-                        ->required(),
                 ])->columnSpan(2),
 
                 Group::make()->schema([
